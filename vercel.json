@@ -1,0 +1,13 @@
+{
+  "buildCommand": "composer install --no-dev --optimize-autoloader",
+  "functions": {
+    "api/index.php": {
+      "runtime": "vercel-php@0.9.0",
+      "memory": 1024,
+      "maxDuration": 30
+    }
+  },
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api/index.php" }
+  ]
+}

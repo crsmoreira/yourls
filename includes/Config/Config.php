@@ -77,6 +77,11 @@ class Config {
             throw new ConfigException("User defined config not found at '$config'");
         }
 
+        // config-vercel.php in /user/ (for Vercel deployment with env vars)
+        if (getenv('VERCEL') && file_exists($this->root . '/user/config-vercel.php')) {
+            return $this->root . '/user/config-vercel.php';
+        }
+
         // config.php in /user/
         if (file_exists($this->root . '/user/config.php')) {
             return $this->root . '/user/config.php';
